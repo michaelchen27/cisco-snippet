@@ -1,0 +1,136 @@
+{
+	"30": {
+		"prefix": "sub-30",
+		"body": [
+			"255.255.255.252"
+		],
+		"description": "Subnet /30"
+	},
+	"29": {
+		"prefix": "sub-29",
+		"body": [
+			"255.255.255.248"
+		],
+		"description": "Subnet /29"
+	},
+	"28": {
+		"prefix": "sub-28",
+		"body": [
+			"255.255.255.240"
+		],
+		"description": "Subnet /28"
+	},
+	"27": {
+		"prefix": "sub-27",
+		"body": [
+			"255.255.255.224"
+		],
+		"description": "Subnet /27"
+	},
+	"26": {
+		"prefix": "sub-26",
+		"body": [
+			"255.255.255.192"
+		],
+		"description": "Subnet /26"
+	},
+	"25": {
+		"prefix": "sub-25",
+		"body": [
+			"255.255.255.128"
+		],
+		"description": "Subnet /25"
+	},
+	"24": {
+		"prefix": "sub-24",
+		"body": [
+			"255.255.255.0"
+		],
+		"description": "Subnet /24"
+	},
+	"23": {
+		"prefix": "sub-23",
+		"body": [
+			"255.255.254.0"
+		],
+		"description": "Subnet /23"
+	},
+	"22": {
+		"prefix": "sub-22",
+		"body": [
+			"255.255.252.0"
+		],
+		"description": "Subnet /22"
+	},
+	"21": {
+		"prefix": "sub-21",
+		"body": [
+			"255.255.248.0"
+		],
+		"description": "Subnet /21"
+	},
+	"20": {
+		"prefix": "sub-20",
+		"body": [
+			"255.255.240.0"
+		],
+		"description": "Subnet /20"
+	},
+	"19": {
+		"prefix": "sub-19",
+		"body": [
+			"255.255.224.0"
+		],
+		"description": "Subnet /19"
+	},
+	"18": {
+		"prefix": "sub-18",
+		"body": [
+			"255.255.192.0"
+		],
+		"description": "Subnet /18"
+	},
+	"17": {
+		"prefix": "sub-17",
+		"body": [
+			"255.255.128.0"
+		],
+		"description": "Subnet /17"
+	},
+	"16": {
+		"prefix": "sub-16",
+		"body": [
+			"255.255.0.0"
+		],
+		"description": "Subnet /16"
+	},
+
+	"Create Default Password": {
+		"prefix": "lock-router",
+		"body": [
+			"line console 0",
+			"password cisco",
+			"login",
+			"line vty 0 4",
+			"password cisco",
+			"login",
+			"enable secret class",
+			"service password-encryption",
+		],
+		"description": "Create default password cisco class"
+	},
+
+	"RIP": {
+		"prefix": "rip",
+		"body": [
+			"router rip",
+			"version 2",
+			"network",
+			"network",
+			"default-information originate",
+			"no auto-summary",
+		],
+		"description": "Create RIPv2 Config"
+	},
+
+}
