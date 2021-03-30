@@ -1,4 +1,12 @@
+//Cisco Commands Snippet
 {
+	"32": {
+		"prefix": "sub-32",
+		"body": [
+			"255.255.255.255"
+		],
+		"description": "Subnet /30"
+	},
 	"30": {
 		"prefix": "sub-30",
 		"body": [
@@ -104,9 +112,43 @@
 		],
 		"description": "Subnet /16"
 	},
-
+	"wm-24": {
+		"prefix": "wm-24",
+		"body": [
+			"0.0.0.255"
+		],
+		"description": "Subnet /16"
+	},
+	"wm-26": {
+		"prefix": "wm-26",
+		"body": [
+			"0.0.0.63"
+		],
+		"description": "Subnet /16"
+	},
+	"wm-27": {
+		"prefix": "wm-27",
+		"body": [
+			"0.0.0.31"
+		],
+		"description": "Subnet /16"
+	},
+	"wm-28": {
+		"prefix": "wm-28",
+		"body": [
+			"0.0.0.15"
+		],
+		"description": "Subnet /16"
+	},
+	"wm-30": {
+		"prefix": "wm-30",
+		"body": [
+			"0.0.0.3"
+		],
+		"description": "Subnet /16"
+	},
 	"Create Default Password": {
-		"prefix": "lock-router",
+		"prefix": "line console",
 		"body": [
 			"line console 0",
 			"password cisco",
@@ -119,7 +161,6 @@
 		],
 		"description": "Create default password cisco class"
 	},
-
 	"RIP": {
 		"prefix": "rip",
 		"body": [
@@ -127,10 +168,156 @@
 			"version 2",
 			"network",
 			"network",
-			"default-information originate",
+			"passive-interface",
 			"no auto-summary",
 		],
 		"description": "Create RIPv2 Config"
 	},
-
+	"IP Address": {
+		"prefix": "ip add",
+		"body": "ip address"
+	},
+	"Interface": {
+		"prefix": "int",
+		"body": "interface"
+	},
+	"fastEthernet": {
+		"prefix": "fastEther",
+		"body": "fastEthernet $1/$2/$3"
+	},
+	"no shutdown": {
+		"prefix": "no shut",
+		"body": "no shutdown"
+	},
+	"div": {
+		"prefix": "div",
+		"body": "!============ $1 ============"
+	},
+	"Initialize": {
+		"prefix": "enable",
+		"body": [
+			"enable",
+			"configure terminal",
+			"hostname ",
+		]
+	},
+	"OSPF": {
+		"prefix": "ospf",
+		"body": [
+			"router ospf 1",
+			"network  area 0",
+			"network  area 0",
+			"network  area 0",
+			"passive-interface"
+		],
+		"description": "Create OSPF Config"
+	},
+	"EIGRP": {
+		"prefix": "eigrp",
+		"body": [
+			"router eigrp 1",
+			"network ",
+			"passive-interface ",
+			"no auto-summary",
+		],
+		"description": "Create EIGRP Config"
+	},
+	"Redistribute others to RIP": {
+		"prefix": "redistribute-rip",
+		"body": [
+			"redistribute ospf 1 metric 1",
+			"redistribute eigrp 1 metric 1"
+		],
+	},
+	"Redistribute others to OSPF": {
+		"prefix": "redistribute-ospf",
+		"body": [
+			"redistribute rip subnets",
+			"redistribute eigrp 1 subnets"
+		],
+	},
+	"Redistribute others to EIGRP": {
+		"prefix": "redistribute-eigrp",
+		"body": [
+			"redistribute ospf 1 metric 1500 2000 255 10 500",
+			"redistribute rip metric 1500 2000 255 10 500"
+		],
+	},
+	"IP-10": {
+		"prefix": "ip-10",
+		"body": [
+			"10.10.10."
+		],
+	},
+	"Create VLANs": {
+		"prefix": "create-vlan",
+		"body": [
+			"vlan 10",
+			"name Faculty",
+			"vlan 20",
+			"name Student",
+			"vlan 30",
+			"name Admin",
+			"vlan 90",
+			"name Native",
+		],
+	},
+	"Switchport Mode Access": {
+			"prefix": "range-access",
+			"body": [
+				"interface range fa0/6-10",
+				"switchport mode access",
+				"switchport access vlan 10",
+				"interface range fa0/11-15",
+				"switchport mode access",
+				"switchport access vlan 20",
+				"interface range fa0/16-20",
+				"switchport mode access",
+				"switchport access vlan 30",
+			],
+	},
+	"Trunking": {
+		"prefix": "trunk-allowed",
+		"body": [
+			"switchport mode trunk",
+			"switchport trunk allowed vlan all",
+			"switchport trunk native vlan 90",
+		],
+	},
+	"VTP": {
+		"prefix": "vtp",
+		"body": [
+			"vtp mode ${1|server,client|}",
+			"vtp domain cisco",
+			"vtp password class",
+		],
+	},
+	"Interface Range": {
+		"prefix": "int-range",
+		"body": [
+			"int range fa0/$1-$2",
+		],
+	},
+	"DHCP": {
+		"prefix": "dhcp",
+		"body": [
+			"ip dhcp excluded-address 192.168.11.254",
+			"ip dhcp pool lan-pool-1",
+			"network 192.168.10.0 255.255.255.0",
+			"default-router 192.168.10.1",
+			"dns-server 8.8.8.8"
+		],
+	},
+	"Root Primary": {
+		"prefix": "root-primary",
+		"body": [
+			"spanning-tree vlan 70 root primary",
+		],
+	},
+	"Root Secondary": {
+		"prefix": "root-secondary",
+		"body": [
+			"spanning-tree vlan 70 root secondary",
+		],
+	},
 }
